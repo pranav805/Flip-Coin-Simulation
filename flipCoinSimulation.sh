@@ -1,15 +1,17 @@
-#!/bin/bash -x
+#!/bin/bash
 echo "Welcome to Flip Coin Simulation"
 declare -A coin
 read -p "Enter number of times you want to flip a coin " noOfFlips
-echo -e "1. Singlet Combination\n2. Doublet Combination"
+echo -e "1. Singlet Combination\n2. Doublet Combination\n3. Triplet Combination"
 read -p "Enter your choice " choice
 
 case $choice in
    1) noOfCoins=1
-      ;;
+   	;;
    2) noOfCoins=2
-      ;;
+    	;;
+	3) noOfCoins=3
+		;;
    *) echo "Invalid choice!"
       ;;
 esac
