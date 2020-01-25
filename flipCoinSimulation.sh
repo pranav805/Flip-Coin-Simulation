@@ -5,17 +5,6 @@ read -p "Enter number of times you want to flip a coin " noOfFlips
 echo -e "1. Singlet Combination\n2. Doublet Combination\n3. Triplet Combination"
 read -p "Enter your choice " choice
 
-case $choice in
-   1) noOfCoins=1
-      ;;
-   2) noOfCoins=2
-      ;;
-	3) noOfCoins=3
-		;;
-	*) echo "Invalid choice!"
-      ;;
-esac
-
 function FlipCoin()
 {
         for(( i=1; i<=$1; i++ ))
@@ -49,7 +38,32 @@ function calculatePercentage()
         echo "Keys      : ${!coin[@]}"
         echo "Percentage: ${coin[@]}"
 }
-FlipCoin $noOfFlips $noOfCoins
-calculatePercentage
 
+function winPercentage()
+{
+	echo "Win Combination Percentage"
+	for i in ${!coin[@]}
+	do
+		echo "$i ${coin[$i]}"
+	done | sort -k2 -rn | head -1
+}
 
+case $choice in
+   1) noOfCoins=1
+		FlipCoin $noOfFlips $noOfCoins
+		calculatePercentage
+      winPercentage
+		;;
+   2) noOfCoins=2
+		FlipCoin $noOfFlips $noOfCoins
+		calculatePercentage
+		winPercentage
+      ;;
+	3) noOfCoins=3
+		FlipCoin $noOfFlips $noOfCoins
+		calculatePercentage
+		winPercentage
+		;;
+	*) echo "Invalid choice!"
+      ;;
+esac
