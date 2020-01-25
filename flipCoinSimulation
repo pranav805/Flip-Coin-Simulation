@@ -1,9 +1,0 @@
-#!/bin/bash -x
-echo "Welcome to Flip Coin Simulation"
-randomCheck=$(( RANDOM%2 ))
-if [ $randomCheck -eq 1 ]
-then
-	echo "Heads"
-else
-	echo "Tails"
-fi
